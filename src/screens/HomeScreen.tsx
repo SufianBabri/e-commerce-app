@@ -11,6 +11,7 @@ import {
   Text,
 } from 'react-native';
 import ProductListItem from '../components/ProductListItem';
+import {Product} from '../models/Product';
 
 export default function HomeScreen() {
   const dispatch = useAppDispatch();

@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import axios from 'axios';
+import {Product} from '../../models/Product';
 
 export type ProductsState = {
   products: Product[] | undefined;
@@ -24,7 +25,12 @@ export const fetchProducts = createAsyncThunk<
     const response = await axios.get<Product[]>(
       'https://my-json-server.typicode.com/benirvingplt/products/products',
     );
-    return response.data;
+
+    return response.data.map(p => {
+      if (p.img.startsWith('http://'))
+        return {...p, img: p.img.replace('http://', 'https://')};
+      else return p;
+    });
   } catch (e) {
     console.error('error-in-api', e);
     return thunkApi.rejectWithValue('An error has occurred');

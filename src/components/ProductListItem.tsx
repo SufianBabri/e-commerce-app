@@ -1,6 +1,7 @@
 import {Button, Image, StyleSheet, Text, View} from 'react-native';
 import {useAppDispatch} from '../store/configure-store';
 import {addToCart} from '../store/features/cart';
+import {Product} from '../models/Product';
 
 type Props = {product: Product};
 
