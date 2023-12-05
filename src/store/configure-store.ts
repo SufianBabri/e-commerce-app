@@ -1,10 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
-import productsReducer from "./features/products";
+import {configureStore} from '@reduxjs/toolkit';
+import {useDispatch} from 'react-redux';
+import productsReducer from './features/products';
+import cartReducer from './features/cart';
 
 export const store = configureStore({
   reducer: {
     products: productsReducer,
+    cart: cartReducer,
   },
 });
 

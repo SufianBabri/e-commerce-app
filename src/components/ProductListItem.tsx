@@ -1,9 +1,12 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Button, Image, StyleSheet, Text, View} from 'react-native';
+import {useAppDispatch} from '../store/configure-store';
+import {addToCart} from '../store/features/cart';
 
 type Props = {product: Product};
 
-export default function ProductItem({product}: Props) {
+export default function ProductListItem({product}: Props) {
   const {name, colour, price, img} = product;
+  const dispatch = useAppDispatch();
 
   return (
     <View style={styles.container}>
@@ -12,6 +15,10 @@ export default function ProductItem({product}: Props) {
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.color}>Color: {colour}</Text>
         <Text style={styles.price}>${price}</Text>
+        <Button
+          title="Add to Cart"
+          onPress={() => dispatch(addToCart(product))}
+        />
       </View>
     </View>
   );

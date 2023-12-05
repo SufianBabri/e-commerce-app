@@ -10,7 +10,7 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
-import ProductItem from '../components/ProductItem';
+import ProductListItem from '../components/ProductListItem';
 
 export default function HomeScreen() {
   const dispatch = useAppDispatch();
@@ -23,7 +23,7 @@ export default function HomeScreen() {
   }, []);
 
   const renderProduct = useCallback(
-    ({item}: ListRenderItemInfo<Product>) => <ProductItem product={item} />,
+    ({item}: ListRenderItemInfo<Product>) => <ProductListItem product={item} />,
     [],
   );
   const renderUi = useCallback(() => {
