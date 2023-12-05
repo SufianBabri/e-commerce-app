@@ -1,15 +1,18 @@
-import {SafeAreaView, StatusBar, Text} from 'react-native';
 import {Provider} from 'react-redux';
 import {store} from './store/configure-store';
-import HomeTab from './HomeTab';
+import HomeScreen from './screens/HomeScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <Provider store={store}>
-      <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
-        <StatusBar />
-        <HomeTab />
-      </SafeAreaView>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="Home" component={HomeScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
     </Provider>
   );
 }
