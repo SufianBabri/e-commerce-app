@@ -1,11 +1,13 @@
 import {Provider} from 'react-redux';
-import {store} from './store/configure-store';
+import {configStore} from './store/configure-store';
 import HomeScreen from './screens/HomeScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import CartScreen from './screens/CartScreen';
 
 const Tab = createBottomTabNavigator();
+const store = configStore();
+
 export default function App() {
   return (
     <Provider store={store}>

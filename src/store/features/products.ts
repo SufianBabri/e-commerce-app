@@ -3,13 +3,13 @@ import axios from 'axios';
 import {Product} from '../../models/Product';
 
 export type ProductsState = {
-  products: Product[] | undefined;
+  items: Product[] | undefined;
   isLoading: boolean;
   error: string | undefined;
 };
 
 const initialState: ProductsState = {
-  products: undefined,
+  items: undefined,
   isLoading: false,
   error: undefined,
 };
@@ -32,7 +32,6 @@ export const fetchProducts = createAsyncThunk<
       else return p;
     });
   } catch (e) {
-    console.error('error-in-api', e);
     return thunkApi.rejectWithValue('An error has occurred');
   }
 });
@@ -48,12 +47,12 @@ export const productsSlice = createSlice({
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.isLoading = false;
-        state.products = undefined;
+        state.items = undefined;
         state.error = action.payload;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.products = action.payload;
+        state.items = action.payload;
         state.error = undefined;
       });
   },

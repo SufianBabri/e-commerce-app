@@ -15,7 +15,7 @@ import {Product} from '../models/Product';
 
 export default function HomeScreen() {
   const dispatch = useAppDispatch();
-  const {products, isLoading, error} = useSelector<RootState, ProductsState>(
+  const {items, isLoading, error} = useSelector<RootState, ProductsState>(
     state => state.products,
   );
 
@@ -38,12 +38,12 @@ export default function HomeScreen() {
 
     return (
       <FlatList
-        data={products}
+        data={items}
         renderItem={renderProduct}
         ListEmptyComponent={<Text style={styles.text}>No products found!</Text>}
       />
     );
-  }, [products, isLoading, error, renderProduct]);
+  }, [items, isLoading, error, renderProduct]);
 
   return <SafeAreaView style={styles.container}>{renderUi()}</SafeAreaView>;
 }
